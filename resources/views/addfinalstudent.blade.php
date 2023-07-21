@@ -37,36 +37,101 @@
               </div>
               <div class="text-center"> 
                   <h1 class="font-display mt-4 text-4xl tracking-tight font-extrabold text-gray-900">
-                    เพิ่มข้อมูลผู้จบหลักสูตร พุทธศักราช 2544
+                    เพิ่มข้อมูลผู้จบหลักสูตร พุทธศักราช 2544-2537
                   </h1>
                 <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-sm md:mt-5 md:text-lg md:max-w-3xl">
-                  หลักสูตรการศึกษานอกระบบระดับการศึกษาขั้นพื้นฐาน พุทธศักราช 2544
+                  หลักสูตรการศึกษานอกระบบระดับการศึกษาขั้นพื้นฐาน พุทธศักราช 2544-2537
                   ของสถานศึกษาในสังกัดสำนักงานส่งเสริมการศึกษาจังหวัดอ่างทอง
                 </p>
                 <div class="relative max-w-3xl px-4 mx-auto mt-10 sm:px-6">
-                    <form action="{{ route('addfinalstudent.add') }}" method="POST">   
+                    <form action="{{ route('addfinalstudent.add') }}" method="POST" class="grid grid-cols-3 gap-4">   
                         @csrf
                         <div>
-                            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-                            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                              <option selected>Choose a country</option>
-                              <option value="US">United States</option>
-                              <option value="CA">Canada</option>
-                              <option value="FR">France</option>
-                              <option value="DE">Germany</option>
+                            <label for="PRENAME" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">คำนำหน้า*</label>
+                            <select id="PRENAME" name="PRENAME" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                              <option value=" ">ว่าง</option>
+                              <option value="นาย">นาย</option>
+                              <option value="นาง">นาง</option>
+                              <option value="นางสาว">นางสาว</option>
+                              <option value="เด็กชาย">เด็กชาย</option>
+                              <option value="เด็กชาย">เด็กหญิง</option>
+                              <option value="เด็กชาย">สามเณร</option>  
+                              <option value="พระ">พระ</option>
                             </select>
                         </div>
                         <div>
-                            <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Small input</label>
-                            <input type="text" 
-                            name="NAME" 
-                            autofocus 
-                            maxlength="13" 
-                            id="default-search" 
-                            class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" 
-                            placeholder="ชื่อผู้จบ" 
-                            required>
+                            <label for="NAME" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อ*</label>
+                            <input type="text" id="NAME" name="NAME" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
                         </div>
+                        <div>
+                            <label for="SURNAME" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">นามสกุล*</label>
+                            <input type="text" id="SURNAME" name="SURNAME" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                        </div>
+                        <div>
+                            <label for="CARDID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เลขบัตรประชาชน*</label>
+                            <input type="text" id="CARDID" name="CARDID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required>
+                        </div>
+                        <div>
+                            <label for="ID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รหัสนักศึกษา(ถ้าไม่มีเลขบัตรประชาชน)</label>
+                            <input type="text" id="ID" name="ID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="">
+                        </div>
+                        <div>
+                            <label for="LAVEL" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระดับชั้นที่จบ*</label>
+                            <select id="countries" name="LAVEL" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                              <option value=" " selected>ระดับ</option>
+                              <option value="1">ประถม</option>
+                              <option value="2">มัธยมต้น</option>
+                              <option value="3">มัธยมปลาย</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="FIN_SEM" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ภาคเรียนที่จบ*</label>
+                            <select id="FIN_SEM" name="FIN_SEM" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                              <option value="">ว่าง</option>
+                              <option value="1/37">1/37</option>
+                              <option value="2/37">2/37</option>
+                              <option value="1/38">1/38</option>
+                              <option value="2/38">2/38</option>
+                              <option value="1/39">1/39</option>
+                              <option value="2/39">2/39</option>
+                              <option value="1/40">1/40</option>
+                              <option value="2/40">2/40</option>
+                              <option value="1/41">1/41</option>
+                              <option value="2/41">2/41</option>
+                              <option value="1/42">1/42</option>
+                              <option value="2/42">2/42</option>
+                              <option value="1/43">1/43</option>
+                              <option value="2/43">2/43</option>
+                              <option value="3/43">3/43</option>
+                              <option value="1/44">1/44</option>
+                              <option value="2/44">2/44</option>
+                              <option value="2/44">3/44</option>
+                              <option value="1/45">1/45</option>
+                              <option value="2/45">2/45</option>
+                              <option value="1/46">1/46</option>
+                              <option value="2/46">2/46</option>
+                              <option value="1/47">1/47</option>
+                              <option value="2/47">2/47</option>
+                              <option value="1/48">1/48</option>
+                              <option value="2/48">2/48</option>
+                              <option value="1/49">1/49</option>
+                              <option value="2/49">2/49</option>
+                              <option value="1/50">1/50</option>
+                              <option value="2/50">2/50</option>
+                              <option value="1/51">1/51</option>
+                              <option value="2/51">2/51</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="TRNGRP" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระเบียน-เล่มที่ (ถ้ามี)</label>
+                            <input type="text" id="TRNGRP" name="TRNGRP" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
+                        </div>
+                        <div>
+                            <label for="TRNRUN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ระเบียน-เลขที่ (ถ้ามี)</label>
+                            <input type="text" id="TRNRUN" name="TRNRUN" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" >
+                        </div>
+                        <div></div>
+                        <button type="submit" class="text-white bg-green-400 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">บันทึก</button>
                     </form>
                 </div>
               </div>
