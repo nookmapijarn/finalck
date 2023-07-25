@@ -3,8 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
+        <title>สกร.จังหวัดอ่างทอง</title>
+        <meta name="description" content="ระบบสำหรับค้นหาและตรวจสอบผู้หลักสูตรในสังกัดของ สกร.จังหวัดอ่างทอง">
+        <meta name="robots" content="ตรวจสอบผู้จบหลักสูตร, ค้นหาผู้จบหลักสูตร, สกร.จังหวัดอ่างทอง">
+        <link rel="icon" type="image/x-icon" href="{{asset('storage/logo-app.jpg');}}">
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,7 +29,29 @@
             }
         </style>
     </head>
-    <body>
+
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="#" class="flex items-center">
+              <img src="{{asset('storage/logo-app.jpg');}}" class="h-8 mr-3 rounded-full" alt="สกร.จังหวัดอ่างทอง" />
+              <span class="self-center text-xl font-semibold whitespace-nowrap">สกร.จังหวัดอ่างทอง</span>
+          </a>
+          <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <li>
+                <a href="{{ url('addfinalstudent') }}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">จัดการ(+)</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>      
+    <body class="">
         <div class="relative pb-4">
             <main class="px-4 mx-auto mt-10 max-w-7xl sm:mt-14">
               <div class="flex justify-center">
@@ -35,10 +59,10 @@
             </div>
               <div class="text-center"> 
                   <h1 class="font-display mt-4 text-md md:text-4xl tracking-tight font-extrabold text-gray-900">
-                    ระบบสืบค้นข้อมูลผู้จบหลักสูตร
+                    ค้นหาและตรวจสอบผู้จบหลักสูตร
                   </h1>
-                <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-xs md:mt-5 md:text-lg md:max-w-3xl">
-                  หลักสูตรการศึกษานอกระบบระดับการศึกษาขั้นพื้นฐาน พุทธศักราช 2551
+                <p class="max-w-md mx-auto mt-3 text-xs text-gray-500 sm:text-xs md:mt-5 md:text-sm md:max-w-3xl">
+                  " ใช้สำหรับการค้นหาและตรวจสอบสถาณะผู้เรียน เช่น การจบหลักสูตร ศึกษาต่อที่อื่น หมดสภาพ พ้นสภาพ ลาออก และอื่นๆ เฉพาะหลักสูตรการศึกษานอกระบบระดับการศึกษาขั้นพื้นฐาน พุทธศักราช 2551 สถานศึกษาในสังกัดของสำนักงานส่งเสริมการเรียนรู้จังหวัดอ่างทอง "
                 </p>
                 <div class="relative max-w-3xl px-4 mx-auto mt-10 sm:px-6">
 
@@ -51,19 +75,25 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                 </svg>
                             </div>
-                            <input type="search" name="search" autofocus maxlength="13" id="default-search" value="{{$old}}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="เลขบัตรประชาชน 13 หลัก" required>
-                            <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">ค้นหา</button>
+                            <input type="search" name="search" autofocus maxlength="25" id="default-search" value="{{$old}}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="เลขบัตรประชาชน 13 หลัก" required>
+                            <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2">ค้นหา</button>
                         </div>
                     </form>
                 </div>
               </div>
               <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-                @if($value)
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                @if($old!=='')
+                <table class="w-full text-sm text-left text-gray-400">
+                    <thead class="text-sm text-gray-700 uppercase bg-gray-200">
                         <tr>
                             <th scope="col" class="px-6 py-3">
+                                ที่
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 รหัสนักศึกษา
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                คำนำหน้า
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 ชื่อ
@@ -86,21 +116,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($value as $v)
+                        @forelse($value as $v)
                         <tr class="bg-white border-b hover:bg-gray-50">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class="px-6 py-3">
+                                {{$loop->iteration}}
+                            </td>
+                            <td scope="row" class="px-6 py-3">
                                 {{$v->ID}}
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            </td>
+                            <td scope="row" class="px-6 py-3">
+                                {{$v->PRENAME}}
+                            </td>
+                            <td scope="row" class="px-6 py-3">
                                 {{$v->NAME}}
-                            </th>
-                            <td class="px-6 py-4">
+                            </td>
+                            <td scope="row" class="px-6 py-3">
                                 {{$v->SURNAME}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-3">
                                 @if($v->FIN_CAUSE==1) <span class="text-green-400">จบหลักสูตร</span> @endif 
                                 @if($v->FIN_CAUSE==2) ลาออก @endif 
-                                @if($v->FIN_CAUSE==3) หมดสภาพ @endif 
+                                @if($v->FIN_CAUSE==3) <span class="text-red-400">หมดสภาพ</span> @endif 
                                 @if($v->FIN_CAUSE==4) พ้นสภาพ @endif 
                                 @if($v->FIN_CAUSE==5) ศึกษาต่อที่อื่น @endif 
                                 @if($v->FIN_CAUSE==6) ศึกษาเพิ่งหลังจบ @endif 
@@ -109,37 +145,40 @@
                                 @if($v->FIN_CAUSE==9) จบอยู่ระหว่างตรวจสอบวุฒิ @endif 
                                 @if($v->FIN_CAUSE=='') ยังไม่ระบุ @endif
                             </td>
-                            <td class="px-6 py-4">
-                                @if($v->LAVEL==1) ประถม @endif 
-                                @if($v->LAVEL==2) มัธยมต้น @endif 
-                                @if($v->LAVEL==3) มัธยมปลาย @endif 
+                            <td scope="row" class="px-6 py-3">
+                                @if($v->LAVEL==1) <span class=""> ประถมศึกษา</span> @endif 
+                                @if($v->LAVEL==2) <span class=""> มัธยมศึกษาต้น</span> @endif 
+                                @if($v->LAVEL==3) <span class=""> มัธยมศึกษาปลาย</span> @endif 
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-3">
                                 {{$v->FIN_SEM}}
                                 @if($v->FIN_SEM=='') - @endif
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-3">
                                 {{$v->TRNRUN}}
                                 @if($v->TRNRUN=='') - @endif
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td colspan="9" class="px-6 py-3">
+                                <div class="text-center p-5">
+                                    <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+                                        <span class="font-medium">ไม่พบข้อมูล !</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
-                  @if(empty($value)) 
-                    <div class="text-center p-5">
-                        <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
-                            <span class="font-medium">ไม่พบข้อมูล!</span>
-                          </div>
-                    </div>
-                  @endif
-                @endif 
+                @endif
             </div>
             </main>
           </div>        
     </body>
-
-    <footer class="bg-white rounded-lg shadow fixed left-0 bottom-0 w-full">
+    <section class="min-pt-10">
+    <footer class="bg-white rounded-lg w-full">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             {{-- <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
@@ -162,8 +201,9 @@
                 </ul>
             </div> --}}
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-xs text-gray-500 sm:text-center dark:text-gray-400"><a href="https://flowbite.com/" class="hover:underline">สำนักงานส่งเสริมการเรียนรู้จังหวัดอ่างทอง</a></span>
-            <span class="block text-xs text-gray-500 sm:text-center dark:text-gray-400"><a href="https://flowbite.com/" class="hover:underline">พัฒนาระบบโดย นายนนทชัย มาพิจารณ์ ครู สกร.อำเภอโพธิ์ทอง</a></span>
+            <span class="block text-xs text-gray-500 sm:text-center dark:text-gray-400"><a href="#" class="hover:underline">สำนักงานส่งเสริมการเรียนรู้จังหวัดอ่างทอง</a></span>
+            <span class="block text-xs text-gray-500 sm:text-center dark:text-gray-400"><a href="https://www.facebook.com/nanthchir.mapijarn" class="hover:underline">พัฒนาระบบโดย นายนนทชัย มาพิจารณ์ ครู สกร.อำเภอโพธิ์ทอง</a></span>
         </div>
     </footer>
+    </section>
 </html>

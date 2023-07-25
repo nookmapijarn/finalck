@@ -3,8 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
+        <title>สกร.จังหวัดอ่างทอง</title>
+        <meta name="description" content="ระบบสำหรับค้นหาและตรวจสอบผู้หลักสูตรในสังกัดของ สกร.จังหวัดอ่างทอง">
+        <meta name="robots" content="ตรวจสอบผู้จบหลักสูตร, ค้นหาผู้จบหลักสูตร, สกร.จังหวัดอ่างทอง">
+        <link rel="icon" type="image/x-icon" href="{{asset('storage/logo-app.jpg');}}">
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,6 +30,7 @@
         </style>
     </head>
     <body>
+        @include('navigation')
         <div class="relative pb-4">
             <main class="px-4 mx-auto mt-10 max-w-7xl sm:mt-14">
               <div class="flex justify-center">
@@ -40,8 +43,10 @@
                     เพิ่มข้อมูลผู้จบหลักสูตร พุทธศักราช 2544-2537
                   </h1>
                 <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-sm md:mt-5 md:text-lg md:max-w-3xl">
-                  หลักสูตรการศึกษานอกระบบระดับการศึกษาขั้นพื้นฐาน พุทธศักราช 2544-2537
-                  ของสถานศึกษาในสังกัดสำนักงานส่งเสริมการศึกษาจังหวัดอ่างทอง
+                  สถานศึกษาในสังกัดสำนักงานส่งเสริมการเรียนรู้จังหวัดอ่างทอง
+                </p>
+                <p>
+                    ผู้ใช้งาน : {{ Auth::user()->name }}
                 </p>
                 <div class="relative max-w-3xl px-4 mx-auto mt-10 sm:px-6">
                     <form action="{{ route('addfinalstudent.add') }}" method="POST" class="grid grid-cols-3 gap-4">   
@@ -138,31 +143,11 @@
             </main>
           </div>  
     </body>
-    <footer class="bg-white rounded-lg shadow fixed left-0 bottom-0 w-full">
+    <footer class="bg-white rounded-lg w-full">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-            {{-- <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
-                    <img src="{{asset('storage/logo-app.jpg');}}" class="h-8 mr-3 rounded-full" alt="" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">สกร.อำเภอโพธิ์ทอง</span>
-                </a>
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                    <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
-                    </li>
-                    <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-                    </li>
-                    <li>
-                        <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline">Contact</a>
-                    </li>
-                </ul>
-            </div> --}}
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"><a href="https://flowbite.com/" class="hover:underline">สำนักงานส่งเสริมการเรียนรู้จังหวัดอ่างทอง</a></span>
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"><a href="https://flowbite.com/" class="hover:underline">นายนนทชัย มาพิจารณ์ ครู สกร.อำเภอโพธิ์ทอง</a></span>
+            <span class="block text-xs text-gray-500 sm:text-center dark:text-gray-400"><a href="#" class="hover:underline">สำนักงานส่งเสริมการเรียนรู้จังหวัดอ่างทอง</a></span>
+            <span class="block text-xs text-gray-500 sm:text-center dark:text-gray-400"><a href="https://www.facebook.com/nanthchir.mapijarn" class="hover:underline">พัฒนาระบบโดย นายนนทชัย มาพิจารณ์ ครู สกร.อำเภอโพธิ์ทอง</a></span>
         </div>
     </footer>
 </html>

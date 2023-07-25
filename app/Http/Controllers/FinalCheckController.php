@@ -18,6 +18,7 @@ class FinalCheckController extends Controller
     public function index(){
         $value=$this->value;
         $old='';
+        //print_r($value);
         return view('finalcheck', compact('value', 'old'));
     }
 
@@ -27,16 +28,18 @@ class FinalCheckController extends Controller
         if(is_numeric($request->search)!=true){
             $value = DB::table('student')
                         ->where('NAME', 'like', '%'.$request->search.'%')
-                        ->select('ID', 'NAME', 'SURNAME', 'FIN_CAUSE', 'FIN_SEM', 'TRNRUN')
+                        ->select('ID', 'PRENAME', 'NAME', 'SURNAME', 'FIN_CAUSE', 'FIN_SEM', 'TRNRUN')
                         ->get();
             $value = $this->formatdata($value);
+           // print_r($value);
                         return view('finalcheck', compact('value', 'old'));
         }else{
             $value = DB::table('student')
                         ->where('CARDID', '=', $request->search)
-                        ->select('ID', 'NAME', 'SURNAME', 'FIN_CAUSE', 'FIN_SEM', 'TRNRUN')
+                        ->select('ID','PRENAME', 'NAME', 'SURNAME', 'FIN_CAUSE', 'FIN_SEM', 'TRNRUN')
                         ->get();
             $value = $this->formatdata($value);
+           // print_r($value);
                         return view('finalcheck', compact('value', 'old'));
         }
     }
@@ -46,6 +49,7 @@ class FinalCheckController extends Controller
         foreach ($data as $d){
             $obj = new \stdClass();
             $obj->ID = $d->ID;
+            $obj->PRENAME = $d->PRENAME;
             $obj->NAME = $d->NAME;
             $obj->SURNAME = $d->SURNAME;
             $obj->FIN_CAUSE = $d->FIN_CAUSE;
